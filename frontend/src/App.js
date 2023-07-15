@@ -19,7 +19,7 @@ function App() {
   const handleAllCom = useComponent(state => state.handleAllCom);
   const isDrawing = useDraw(state => state.isDrawing);
 
-
+  console.log(crtKey)
 
   useEffect(() => {
     // (async () => {

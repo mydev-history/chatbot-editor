@@ -105,7 +105,7 @@ export default function Step({
     }
   }
 
-  const endPS = (id, pos) => {
+  const endPS = (id, pos, key) => {
     if (id !== sPId.split('-')[0] && sPId) {
       setEP(pos);
       addLine({ sp_id: sPId, ep_id: id, s_pos: startPoint, e_pos: pos })
@@ -124,6 +124,7 @@ export default function Step({
           setSPId('');
         })
     }
+    sltCrtKey(key);
   }
 
   const del = (id) => {
@@ -150,8 +151,7 @@ export default function Step({
       >
         <div className='flex flex-col w-52 bg-gray-300 rounded-lg shadow-md shadow-white z-0 absolute'>
           <button
-            onDoubleClick={() => sltCrtKey(com.key)}
-            onClick={() => endPS(com._id, { x: com.x - 10, y: com.y + 22 })}
+            onClick={() => endPS(com._id, { x: com.x - 10, y: com.y + 22 }, com.key)}
             onMouseEnter={() => setShowDelStep(true)}
             onMouseLeave={() => setShowDelStep(false)}
             className='flex flex-row justify-start items-center bg-gray-100 h-10 rounded-t-lg pl-3'

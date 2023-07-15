@@ -1,19 +1,16 @@
 import React from 'react';
-import { FaWindowClose, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
+import { FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 
-import { useHandlePopUp, useComponent } from "../../store";
-import { addStep, editStep } from '../../services/step.service';
-import { keyData } from '../../config/items';
+import ComHeader from '../basic/comDetail/comHeader';
+import SaveBtn from '../basic/comDetail/saveBtn';
 
+import { useComponent } from "../../store";
 
-function ComDatail() {
+function ComDetail() {
   const [load, setLoad] = React.useState(false);
 
-  const sltCrtKey = useHandlePopUp(state => state.sltCrtKey);
   const sltCom = useComponent(state => state.sltCom);
-  const allCom = useComponent(state => state.allCom);
   const handleSltCom = useComponent(state => state.handleSltCom);
-  const handleAllCom = useComponent(state => state.handleAllCom);
 
   const changeText = (value, index) => {
     let comData = sltCom;
@@ -22,42 +19,7 @@ function ComDatail() {
     setLoad(!load);
   }
 
-  const save = () => {
-    let allData = allCom;
-    let step = {};
-    if (sltCom._id) {
-      step._id = sltCom._id;
-      step.x = sltCom.x;
-      step.y = sltCom.y;
-      step.key = sltCom.key;
-      step.elements = sltCom.elements;
-      editStep(step)
-        .then(val => {
-          let index = allData.findIndex(com => com._id === val._id);
-          if (index !== -1) {
-            allData.splice(index, 1, val);
-            handleAllCom(allData)
-            sltCrtKey('')
-          }
-          else {
-            console.log("Not found")
-          }
-        })
-    }
-    else {
-      step.x = 0;
-      step.y = 0;
-      step.key = sltCom.key;
-      step.elements = sltCom.elements;
-      addStep(step)
-        .then(val => {
-          allData.push(val);
-          handleAllCom(allData);
-          sltCrtKey('')
-        })
-    }
 
-  }
   const addButton = () => {
     const selData = sltCom;
     selData.elements.push({ type: 'button', content: '', placeholder: 'Click to edit', isNext: true });
@@ -75,21 +37,8 @@ function ComDatail() {
   return (
     <>
       <div className='flex flex-col z-10 min-w-[380px] min-h-screen max-h-screen bg-gray-200 absolute right-0 shadow-xl shadow-white overflow-y-auto pb-44 comdetail-scrollbar'>
+        <ComHeader />
 
-        <div className='flex flex-row w-full h-20 border-b-2 z-20 bg-gray-200 border-gray-500 items-center p-4 fixed'>
-          <div className='text-3xl text-pink-400'>
-            {keyData[`${sltCom.key}`]['icon']}
-          </div>
-          <p className='text-2xl ml-4 font-bold text-gray-600'>
-            {keyData[`${sltCom.key}`]['title']}
-          </p>
-          <button
-            onClick={() => sltCrtKey('')}
-            className='absolute top-7 text-2xl  left-[340px] text-gray-400 hover:text-gray-700 active:text-gray-900'
-          >
-            <FaWindowClose />
-          </button>
-        </div >
 
         <div className='mt-20'>
           {
@@ -146,29 +95,15 @@ function ComDatail() {
                     </div>
                   }
                 </div>
-
               )
             })
           }
         </div>
-        < div className="w-full h-20 bg-color1 bottom-0 fixed" >
-          <button
-            onClick={() => sltCrtKey('')}
-            className='w-24 h-8 bg-gray-100 hover:bg-gray-300 active:bg-gray-500 fixed bottom-6 right-32 rounded-lg font-bold text-gray-600'
-          >
-            Cancel
-          </button>
-
-          <button onClick={save}
-            className='w-24 h-8 bg-pink-600 hover:bg-pink-700 active:bg-pink-900 fixed bottom-6 right-4 rounded-lg font-bold text-white'
-          >
-            Save
-          </button>
-        </div >
+        <SaveBtn />
       </div >
 
     </>
   );
 }
 
-export default ComDatail;
+export default ComDetail;
