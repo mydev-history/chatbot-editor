@@ -10,7 +10,7 @@ export default function ComHeader() {
   const sltCom = useComponent(state => state.sltCom);
   return (
     <>
-      <div className='flex flex-row w-full h-20 border-b-2 z-20 bg-gray-200 border-gray-500 items-center p-4 fixed'>
+      <div className='flex flex-row w-full h-20 border-b-2 bg-gray-200 border-gray-500 items-center p-4'>
         <div className='text-3xl text-pink-400'>
           {keyData[`${sltCom.key}`]['icon']}
         </div>

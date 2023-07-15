@@ -73,14 +73,13 @@ export const elements = {
   ],
   "btn": [
     {
-      type: "addbutton",
-      content: "Add another button",
-    },
-    {
       type: "button",
       content: "",
       placeholder: "Click to edit",
       isNext: true
     },
-  ]
+  ],
+  "media": {
+
+  }
 }

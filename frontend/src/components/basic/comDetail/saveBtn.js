@@ -49,16 +49,16 @@ function SaveBtn() {
   }
   return (
     <>
-      < div className="w-full h-20 bg-color1 bottom-0 fixed" >
+      < div className="flex w-full min-h-[80px] bg-color1 mt-auto justify-end pt-6">
         <button
           onClick={() => sltCrtKey('')}
-          className='w-24 h-8 bg-gray-100 hover:bg-gray-300 active:bg-gray-500 fixed bottom-6 right-32 rounded-lg font-bold text-gray-600'
+          className='w-24 h-8 bg-gray-100 hover:bg-gray-300 active:bg-gray-500 rounded-lg font-bold text-gray-600'
         >
           Cancel
         </button>
 
         <button onClick={save}
-          className='w-24 h-8 bg-pink-600 hover:bg-pink-700 active:bg-pink-900 fixed bottom-6 right-4 rounded-lg font-bold text-white'
+          className='w-24 h-8 bg-pink-600 hover:bg-pink-700 active:bg-pink-900 rounded-lg font-bold text-white ml-5 mr-5'
         >
           Save
         </button>

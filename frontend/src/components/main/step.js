@@ -139,7 +139,6 @@ export default function Step({
         })
     }
   }
-
   return (
     <>
       <Draggable
@@ -149,7 +148,7 @@ export default function Step({
         onStop={(e) => handleDragEnd(e, com)}
         onDrag={handleDrag}
       >
-        <div className='flex flex-col w-52 bg-gray-300 rounded-lg shadow-md shadow-white z-0 absolute'>
+        <div className={`flex flex-col ${sltCom && sltCom._id === com._id ? 'z-10' : ''} w-52 bg-gray-300 rounded-lg shadow-md shadow-white absolute`}>
           <button
             onClick={() => endPS(com._id, { x: com.x - 10, y: com.y + 22 }, com.key)}
             onMouseEnter={() => setShowDelStep(true)}

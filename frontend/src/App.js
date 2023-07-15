@@ -19,8 +19,6 @@ function App() {
   const handleAllCom = useComponent(state => state.handleAllCom);
   const isDrawing = useDraw(state => state.isDrawing);
 
-  console.log(crtKey)
-
   useEffect(() => {
     // (async () => {
     //   const allSteps = await getSteps();
@@ -45,7 +43,7 @@ function App() {
           allCom.map((com, index) => {
             return (
               <Step
-                key={index}
+                key={com._id}
                 com={com}
                 index={index}
               />

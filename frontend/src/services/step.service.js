@@ -24,6 +24,7 @@ export async function addStep(step) {
     throw new Error('Something went wrong');
   }
 }
+
 export async function editStep(step) {
   try {
     const response = await axios.put(`${apiUrl}/ai_step/${step._id}`, step, {
@@ -36,6 +37,7 @@ export async function editStep(step) {
     throw new Error('Something went wrong');
   }
 }
+
 export async function delStep(id) {
   try {
     const response = await axios.delete(`${apiUrl}/ai_step/${id}`, {
