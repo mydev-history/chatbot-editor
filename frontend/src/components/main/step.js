@@ -1,31 +1,30 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Draggable from 'react-draggable';
-import { FaChevronCircleRight, FaTrash } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 import { editStep, delStep } from '../../services/step.service';
-import { addLine, delLine } from '../../services/canvas.service';
+import { addLine } from '../../services/canvas.service';
 
 import { keyData } from '../../config/items';
 
 import { useHandlePopUp, useComponent, useDraw } from '../../store';
 
+import StepList from '../../config/stepList';
+
 export default function Step({
   com,
   index,
 }) {
-  const btnRef = useRef({});
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [showDelStep, setShowDelStep] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [showDelStep, setShowDelStep] = useState(false);
 
-
-  const sltCrtKey = useHandlePopUp(state => state.sltCrtKey);
   const sltCom = useComponent(state => state.sltCom)
   const allCom = useComponent(state => state.allCom);
-  const handleSltCom = useComponent(state => state.handleSltCom);
-  const handleAllCom = useComponent(state => state.handleAllCom);
-  const isDrawing = useDraw(state => state.isDrawing);
   const startPoint = useDraw(state => state.startPoint);
   const allLines = useDraw(state => state.allLines);
 
+  const sltCrtKey = useHandlePopUp(state => state.sltCrtKey);
+  const handleSltCom = useComponent(state => state.handleSltCom);
+  const handleAllCom = useComponent(state => state.handleAllCom);
   const setSP = useDraw(state => state.setSP);
   const setEP = useDraw(state => state.setEP);
   const setSPId = useDraw(state => state.setSPId);
@@ -91,19 +90,9 @@ export default function Step({
           console.log("Not found");
         }
       })
-    // if (com._id !== sPId.split('-')[0] && sPId) {
-    //   endPS(com._id, { x: com.x, y: com.y + 22 });
-    // }
   }
 
-  const startPS = (id) => {
-    if (isDrawing) {
-      const btnRect = btnRef.current[id];
-      const bounds = btnRect.getBoundingClientRect();
-      setSP({ x: bounds.left + 10, y: bounds.top + 10 });
-      setSPId(id);
-    }
-  }
+
 
   const endPS = (id, pos, key) => {
     if (id !== sPId.split('-')[0] && sPId) {
@@ -127,18 +116,7 @@ export default function Step({
     sltCrtKey(key);
   }
 
-  const del = (id) => {
-    if (isDrawing) {
-      delLine(id)
-        .then(val => {
-          const allLinesData = allLines;
-          const leftLinesData = allLinesData.filter(line => line._id !== val._id);
-          setAllLines(leftLinesData);
-          setSP({});
-          setSPId('');
-        })
-    }
-  }
+
   return (
     <>
       <Draggable
@@ -168,45 +146,7 @@ export default function Step({
               <FaTrash />
             </div>
           </button>
-          {
-            com.elements.length > 0 &&
-            com.elements.map((element, index) => {
-              return (
-                <div className='relative pl-3 pr-3' key={index}>
-                  {
-                    element.type === "txt" &&
-                    <input
-                      type='text'
-                      className='flex mt-2 mb-2 items-center w-full focus:outline-blue-300 h-9 pl-3 bg-white rounded-sm'
-                      value={element.content}
-                      placeholder='This is a TextInput.'
-                      onChange={() => console.log("Value can be only changed on EditPanel")} />
-                  }
-                  {
-                    element.type === "button" &&
-                    <input
-                      type='text'
-                      className='flex shadow-md text-gray-100 shadow-blue-800 mt-2 mb-2 items-center w-full focus:outline-blue-300 h-9 pl-3 bg-forceblue rounded-sm '
-                      value={element.content}
-                      placeholder='This is a Button.'
-                      onChange={() => console.log("Value can be only changed on EditPanel")} />
-                  }
-                  {element.isNext &&
-                    <div>
-                      <button
-                        ref={el => btnRef.current[`${com._id}-${index}`] = el}
-                        onClick={() => startPS(`${com._id}-${index}`)}
-                        onDoubleClick={() => del(`${com._id}-${index}`)}
-                        className={`absolute top-[18px] right-0 text-lightblue active:text-green-800 hover:scale-125 ${sPId === `${com._id}-${index}` ? 'animate-ping' : ''}`}
-                      >
-                        <FaChevronCircleRight />
-                      </button>
-                    </div>
-                  }
-                </div>
-              )
-            })
-          }
+          <StepList com={com} />
         </div>
       </Draggable >
     </>

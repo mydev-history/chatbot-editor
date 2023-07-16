@@ -1,5 +1,6 @@
 import Txt from "../components/comList/txt";
 import Btn from "../components/comList/btn";
+import Media from "../components/comList/media";
 
 export const comList = {
   "sendmsg": <Txt />,
@@ -10,5 +11,6 @@ export const comList = {
   "askdate": <Txt />,
   "askaddress": <Txt />,
   "askurl": <Txt />,
-  "btn": <Btn />
+  "btn": <Btn />,
+  "media": <Media />
 }

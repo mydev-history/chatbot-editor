@@ -10,7 +10,7 @@ import DrawButton from './components/basic/drawButton';
 import { useHandlePopUp, useComponent, useDraw } from './store';
 import { getSteps } from './services/step.service';
 //Create Components
-import ComDatail from './components/main/comDetail';
+import ComDetail from './components/main/comDetail';
 
 function App() {
 
@@ -20,10 +20,6 @@ function App() {
   const isDrawing = useDraw(state => state.isDrawing);
 
   useEffect(() => {
-    // (async () => {
-    //   const allSteps = await getSteps();
-    //   handleAllCom(allSteps);
-    // })();
     getSteps()
       .then(val => {
         handleAllCom(val);
@@ -36,8 +32,7 @@ function App() {
         <Start />
         <PopUp />
         {isDrawing && <DrawButton />}
-        {(crtKey !== "" && !isDrawing) && <ComDatail />}
-        {/* <div className='w-[1200px] ml-64 grid grid-cols-5 p-8 gap-3'> */}
+        {(crtKey !== "" && !isDrawing) && <ComDetail />}
         {
           allCom.length > 0 &&
           allCom.map((com, index) => {
@@ -48,11 +43,8 @@ function App() {
                 index={index}
               />
             )
-
           })
         }
-
-        {/* </div> */}
       </div >
     </>
   );
