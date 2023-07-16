@@ -51,3 +51,12 @@ export async function delStep(id) {
     throw new Error('Something went wrong');
   }
 }
+
+export async function uploadImg(img) {
+  const response = await axios.post(`${apiUrl}/ai_step/upload`, img, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+  return response.data;
+}

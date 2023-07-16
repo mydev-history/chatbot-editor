@@ -1,5 +1,5 @@
 
-import { comList } from '../../config/comList';
+import { comList } from '../../config/list';
 
 import ComHeader from '../basic/comDetail/comHeader';
 import SaveBtn from '../basic/comDetail/saveBtn';

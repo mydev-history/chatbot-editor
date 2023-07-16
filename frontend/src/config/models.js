@@ -80,6 +80,8 @@ export const elements = {
     },
   ],
   "media": {
-
+    type: "",
+    content: "",
+    isNext: true
   }
 }

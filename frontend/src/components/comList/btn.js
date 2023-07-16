@@ -32,7 +32,6 @@ export default function Btn() {
     handleSltCom(selData);
     setLoad(!load);
   }
-  console.log(sltCom)
   return (
     <>
       <div className='flex flex-col overflow-y-auto p-1 comdetail-scrollbar'>
