@@ -44,6 +44,9 @@ function SaveBtn() {
           handleAllCom(allData);
           sltCrtKey('')
         })
+        .catch(err => {
+          console.log("error");
+        })
     }
 
   }

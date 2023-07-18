@@ -47,6 +47,15 @@ export default function Btn({
           return (
             <div className='relative pl-3 pr-3' key={index}>
               {
+                element.type === "txt" &&
+                <input
+                  type='text'
+                  className='flex mt-2 mb-2 items-center w-full focus:outline-blue-300 h-9 pl-3 bg-white rounded-sm'
+                  value={element.content}
+                  placeholder='This is a TextInput.'
+                  onChange={() => console.log("Value can be only changed on EditPanel")} />
+              }
+              {
                 element.type === "button" &&
                 <input
                   type='text'

@@ -41,22 +41,22 @@ export default function Media({ com }) {
     <>
       <div className='relative p-2'>
         {
-          com.elements.type === "upload" &&
+          com.elements[0].type === "upload" &&
           <img
-            src={`http://localhost:5000/${com.elements.content}`}
+            src={`http://localhost:5000/${com.elements[0].content}`}
             alt="uploaded"
             className="w-full h-48 border-[10px] border-white"
           />
 
         }
         {
-          com.elements.type === "url" &&
+          com.elements[0].type === "url" &&
           <img
-            src={com.elements.content}
+            src={com.elements[0].content}
             alt='url'
             className="w-full h-48 border-[10px] border-white" />
         }
-        {com.elements.isNext &&
+        {com.elements[0].isNext &&
           <div>
             <button
               ref={el => btnRef.current[`${com._id}-0`] = el}
