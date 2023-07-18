@@ -12,7 +12,6 @@ function Start() {
   const isDrawing = useDraw(state => state.isDrawing);
   const allLines = useDraw(state => state.allLines);
   const sPId = useDraw(state => state.sPId);
-  const allTest = useTest(state => state.allTest);
 
   const showPopUp = useHandlePopUp(state => state.showPopUp);
   const enableDraw = useDraw(state => state.enableDraw);

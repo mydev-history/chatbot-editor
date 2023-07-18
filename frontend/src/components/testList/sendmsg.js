@@ -1,14 +1,16 @@
 
-import {
-  Button
-} from "@material-tailwind/react";
+import { useEffect, useState } from "react";
 import { FcAndroidOs } from "react-icons/fc";
-
-export default function Btn({
+export default function Sendmsg({
   test,
   nextStep,
 }) {
+  useEffect(() => {
+    setTimeout(() => {
 
+      nextStep('', test.elements[0].sp_id);
+    }, 300);
+  }, [])
   return (
     <>
       {test.elements.map((element, index) => {
@@ -29,23 +31,6 @@ export default function Btn({
           </div>
         )
       })}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
-        {test.elements.filter(element => element.type !== "txt").map((element, index) => {
-          return (
-            <div key={index}>
-              {
-                element.type === "button" &&
-                <Button
-                  onClick={() => nextStep(element.content, element.sp_id)}
-                  color="pink"
-                  className="w-full">
-                  {element.content}
-                </Button>
-              }
-            </div>
-          )
-        })}
-      </div>
     </>
   )
 }
