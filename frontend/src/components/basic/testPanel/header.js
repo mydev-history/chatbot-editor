@@ -34,6 +34,7 @@ export default function Header({
       }
     }
   }
+
   return (
     <>
       <CardHeader color="blue-gray" className="relative min-h-[64px]">
