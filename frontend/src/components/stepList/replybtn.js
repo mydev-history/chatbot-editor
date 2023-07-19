@@ -5,7 +5,11 @@ import { FaChevronCircleRight } from 'react-icons/fa';
 import { delLine } from '../../services/canvas.service';
 import { useDraw } from '../../store';
 
-export default function Txt({ com }) {
+export default function Replybtn({
+  com
+}) {
+
+  console.log(com);
   const btnRef = useRef({});
 
   const isDrawing = useDraw(state => state.isDrawing);
@@ -47,21 +51,34 @@ export default function Txt({ com }) {
               {
                 element.type === "txt" &&
                 <div
-                  className='flex mt-2 mb-2 items-center w-full break-words break-all shadow-md focus:outline-blue-300 px-3 py-2 bg-white rounded-md'
+                  className=' break-all shadow-md  text-black mt-2 mb-2 items-center focus:outline-blue-300 p-2 bg-white rounded-md '
                 >{element.content}</div>
               }
-              {element.isNext &&
-                <div>
-                  <button
-                    ref={el => btnRef.current[`${com._id}-${index}`] = el}
-                    onClick={() => startPS(`${com._id}-${index}`)}
-                    onDoubleClick={() => del(`${com._id}-${index}`)}
-                    className={`absolute top-[18px] right-0 text-lightblue active:text-green-800 hover:scale-125 ${sPId === `${com._id}-${index}` ? 'animate-ping' : ''}`}
-                  >
-                    <FaChevronCircleRight />
-                  </button>
-                </div>
+              {
+                element.type === "buttons" &&
+                <>
+                  {
+                    element.buttons.map((button, index) => {
+                      return (
+                        <>
+                          <div className='bg-forceblue rounded-md mt-1 text-gray-100 px-2 text-center shadow-sm'>{button.content}</div>
+                          <div className=' border-gray-500 relative'>
+                            <button
+                              ref={el => btnRef.current[`${com._id}-${index}`] = el}
+                              onClick={() => startPS(`${com._id}-${index}`)}
+                              onDoubleClick={() => del(`${com._id}-${index}`)}
+                              className={`absolute top-[-20px] right-[-12px] text-lightblue active:text-green-800 hover:scale-125 ${sPId === `${com._id}-${index}` ? 'animate-ping' : ''}`}
+                            >
+                              <FaChevronCircleRight />
+                            </button>
+                          </div>
+                        </>
+                      )
+                    })
+                  }
+                </>
               }
+
             </div>
           )
         })

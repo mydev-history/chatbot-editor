@@ -19,6 +19,12 @@ function App() {
   const handleAllCom = useComponent(state => state.handleAllCom);
   const isDrawing = useDraw(state => state.isDrawing);
 
+  // const [position, setPosition] = useState({ x: 0, y: 0 });
+
+
+
+  console.log(allCom);
+
   useEffect(() => {
     getSteps()
       .then(val => {
@@ -27,7 +33,8 @@ function App() {
   }, [])
   return (
     <>
-      <div className="w-full min-h-screen bg-gray-700" style={{ backgroundImage: "url('./grid.png')" }}>
+      <div className="w-full min-h-screen  bg-gray-700 overflow-auto"
+        style={{ backgroundImage: "url('./grid.png')" }}>
         <Canvas />
         <Start />
         <PopUp />
@@ -45,6 +52,7 @@ function App() {
             )
           })
         }
+
       </div >
     </>
   );

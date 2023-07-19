@@ -17,14 +17,12 @@ export default function Btn() {
     setLoad(!load);
   }
 
-
   const changeText = (value, index) => {
     let comData = sltCom;
     comData.elements[index].content = value;
     handleSltCom(comData);
     setLoad(!load);
   }
-
 
   const delBtn = index => {
     const selData = sltCom;
