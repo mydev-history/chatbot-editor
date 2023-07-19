@@ -88,5 +88,70 @@ export const elements = {
     type: "",
     content: "",
     isNext: true
-  }]
+
+  },
+  "keyopt": [
+    {
+      type: "txt",
+      content: "",
+      placeholder: "Click to edit",
+    },
+    {
+      type: "button",
+      content: "",
+      placeholder: "Click",
+      isNext: true,
+      keywords: [
+        {
+          type: "keyword",
+          content: "sdf",
+          placeholder: "Click keyword",
+        }
+      ]
+    }
+  ],
+  "replybtn": [
+    {
+      type: "txt",
+      content: "Hello",
+      placeholder: "Click to edit",
+    },
+    {
+      type: "buttons",
+      buttons: [
+        {
+          type: "button",
+          content: "",
+          placeholder: "Click",
+          isNext: true
+        }
+      ]
+    }
+  ],
+  "optinout": [
+    {
+      type: "txt",
+      content: "",
+      placeholder: "",
+    },
+    {
+      type: "buttons",
+      buttons: [
+        {
+          type: "button",
+          content: "Yes",
+          placeholder: "Click",
+          isNext: true
+        },
+        {
+          type: "button",
+          content: "No",
+          placeholder: "Click",
+          isNext: true
+        }
+      ]
+    }
+  ],
+
+
 }

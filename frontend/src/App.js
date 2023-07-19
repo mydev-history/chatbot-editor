@@ -30,8 +30,9 @@ function App() {
   }, [])
   return (
     <>
-      <div className="w-full min-h-screen bg-gray-700" style={{ backgroundImage: "url('./grid.png')" }}>
-        <TestPanel />
+      <div className="w-full min-h-screen  bg-gray-700 overflow-auto"
+        style={{ backgroundImage: "url('./grid.png')" }}>
+
         <Canvas />
         <Start />
         <PopUp />
@@ -49,6 +50,7 @@ function App() {
             )
           })
         }
+
       </div >
     </>
   );

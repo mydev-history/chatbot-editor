@@ -8,8 +8,6 @@ export default function Txt() {
   const sltCom = useComponent(state => state.sltCom);
   const handleSltCom = useComponent(state => state.handleSltCom);
 
-
-
   const changeText = (value, index) => {
     let comData = sltCom;
     comData.elements[index].content = value;

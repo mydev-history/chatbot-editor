@@ -1,6 +1,9 @@
 import Txt from "../components/comList/txt";
 import Btn from "../components/comList/btn";
 import Media from "../components/comList/media";
+import Keyopt from "../components/comList/keyopt";
+import Replybtn from "../components/comList/replybtn";
+import Optinout from "../components/comList/optinout";
 
 export const comList = {
   "sendmsg": <Txt />,
@@ -12,5 +15,8 @@ export const comList = {
   "askaddress": <Txt />,
   "askurl": <Txt />,
   "btn": <Btn />,
-  "media": <Media />
+  "media": <Media />,
+  "keyopt": <Keyopt />,
+  "replybtn": <Replybtn />,
+  "optinout": <Optinout />
 }
