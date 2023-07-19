@@ -17,27 +17,29 @@ function App() {
 
   const crtKey = useHandlePopUp(state => state.crtKey);
   const allCom = useComponent(state => state.allCom);
-  const handleAllCom = useComponent(state => state.handleAllCom);
+  const isShowCom = useComponent(state => state.isShowCom);
   const isDrawing = useDraw(state => state.isDrawing);
+
+  const handleAllCom = useComponent(state => state.handleAllCom);
   useEffect(() => {
     getSteps()
       .then(val => {
         handleAllCom(val);
       })
       .catch(err => {
-        console.log("error")
+        console.log("error");
       })
   }, [])
   return (
     <>
       <div className="w-full min-h-screen  bg-gray-700 overflow-auto"
         style={{ backgroundImage: "url('./grid.png')" }}>
-
+        <TestPanel />
         <Canvas />
         <Start />
         <PopUp />
         {isDrawing && <DrawButton />}
-        {(crtKey !== "" && !isDrawing) && <ComDetail />}
+        {(isShowCom && !isDrawing) && <ComDetail />}
         {
           allCom.length > 0 &&
           allCom.map((com, index) => {

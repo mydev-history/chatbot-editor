@@ -6,8 +6,9 @@ import { keyData } from '../../../config/items'
 import { useHandlePopUp, useComponent } from '../../../store';
 
 export default function ComHeader() {
-  const sltCrtKey = useHandlePopUp(state => state.sltCrtKey);
   const sltCom = useComponent(state => state.sltCom);
+  const shutCom = useComponent(state => state.shutCom)
+
   return (
     <>
       <div className='flex flex-row w-full h-20 border-b-2 bg-gray-200 border-gray-500 items-center p-4'>
@@ -18,7 +19,7 @@ export default function ComHeader() {
           {keyData[`${sltCom.key}`]['title']}
         </p>
         <button
-          onClick={() => sltCrtKey('')}
+          onClick={shutCom}
           className='absolute top-7 text-2xl  left-[340px] text-gray-400 hover:text-gray-700 active:text-gray-900'
         >
           <FaWindowClose />

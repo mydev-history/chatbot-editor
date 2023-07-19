@@ -30,3 +30,20 @@ exports.delLine = catchAsync(async (req, res, next) => {
   res.send(delLine);
 });
 
+exports.delLines = catchAsync(async (req, res, next) => {
+  const id = req.params.id;
+  await Canvas.deleteMany({
+    $or: [
+      { ep_id: id },
+      { sp_id: { $regex: new RegExp(id, 'i') } }
+    ]
+  });
+  res.send({ msg: "success" });
+})
+
+exports.replaceLine = catchAsync(async (req, res, next) => {
+  const id = req.params.id;
+  const line = req.body;
+  await Canvas.findByIdAndUpdate(id, line, { new: true });
+  res.send({ msg: "success" })
+})

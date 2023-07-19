@@ -1,12 +1,11 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { FaChevronCircleRight } from 'react-icons/fa';
 
 import { delLine } from '../../services/canvas.service';
 import { useDraw } from '../../store';
 
-export default function Media({ com }) {
-  const btnRef = useRef({});
+export default function Media({ com, btnRef }) {
 
   const isDrawing = useDraw(state => state.isDrawing);
   const allLines = useDraw(state => state.allLines);

@@ -1,6 +1,6 @@
 
 import { comList } from '../../config/comList';
-
+import { Radio } from "@material-tailwind/react";
 import ComHeader from '../basic/comDetail/comHeader';
 import SaveBtn from '../basic/comDetail/saveBtn';
 import { useHandlePopUp } from '../../store';

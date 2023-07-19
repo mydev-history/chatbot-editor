@@ -88,8 +88,8 @@ export const elements = {
     type: "",
     content: "",
     isNext: true
-
   },
+  ],
   "keyopt": [
     {
       type: "txt",
@@ -152,6 +152,4 @@ export const elements = {
       ]
     }
   ],
-
-
 }

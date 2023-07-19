@@ -1,16 +1,16 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { FaChevronCircleRight } from 'react-icons/fa';
 
 import { delLine } from '../../services/canvas.service';
 import { useDraw } from '../../store';
 
 export default function Optinout({
-  com
+  com,
+  btnRef,
 }) {
 
   console.log(com);
-  const btnRef = useRef({});
 
   const isDrawing = useDraw(state => state.isDrawing);
   const allLines = useDraw(state => state.allLines);

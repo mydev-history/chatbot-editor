@@ -1,14 +1,14 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { FaChevronCircleRight } from 'react-icons/fa';
 
 import { delLine } from '../../services/canvas.service';
 import { useDraw } from '../../store';
 
 export default function Btn({
-  com
+  com,
+  btnRef,
 }) {
-  const btnRef = useRef({});
 
   const isDrawing = useDraw(state => state.isDrawing);
   const allLines = useDraw(state => state.allLines);

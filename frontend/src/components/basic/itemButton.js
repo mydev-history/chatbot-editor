@@ -9,9 +9,11 @@ export default function ItemButton({
   const sltCrtKey = useHandlePopUp(state => state.sltCrtKey);
   const shutPopUp = useHandlePopUp(state => state.shutPopUp);
   const handleSltCom = useComponent(state => state.handleSltCom);
+  const showCom = useComponent(state => state.showCom);
 
   const sltComponent = (keyValue) => {
     sltCrtKey(keyValue);
+    showCom();
     shutPopUp();
     handleSltCom({
       key: keyValue,

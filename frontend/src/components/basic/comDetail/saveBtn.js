@@ -10,6 +10,7 @@ function SaveBtn() {
   const sltCrtKey = useHandlePopUp(state => state.sltCrtKey);
 
   const handleAllCom = useComponent(state => state.handleAllCom);
+  const shutCom = useComponent(state => state.shutCom);
 
   const save = () => {
     let allData = allCom;
@@ -26,7 +27,8 @@ function SaveBtn() {
           if (index !== -1) {
             allData.splice(index, 1, val);
             handleAllCom(allData)
-            sltCrtKey('')
+            sltCrtKey('');
+            shutCom();
           }
           else {
             console.log("Not found")
@@ -42,7 +44,8 @@ function SaveBtn() {
         .then(val => {
           allData.push(val);
           handleAllCom(allData);
-          sltCrtKey('')
+          sltCrtKey('');
+          shutCom();
         })
         .catch(err => {
           console.log("error");
@@ -54,7 +57,7 @@ function SaveBtn() {
     <>
       < div className="flex w-full min-h-[80px] bg-color1 mt-auto justify-end pt-6">
         <button
-          onClick={() => sltCrtKey('')}
+          onClick={shutCom}
           className='w-24 h-8 bg-gray-100 hover:bg-gray-300 active:bg-gray-500 rounded-lg font-bold text-gray-600'
         >
           Cancel

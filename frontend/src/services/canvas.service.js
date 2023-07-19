@@ -41,3 +41,31 @@ export async function delLine(sPId) {
     throw new Error('Something went wrong');
   }
 }
+
+export async function delLines(id) {
+  console.log(id)
+  try {
+    const response = await axios.delete(`${apiUrl}/ai_canvas/delLines/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return response.data;
+  }
+  catch (error) {
+    throw new Error("Something went wrong");
+  }
+}
+
+export async function replaceLine(line) {
+  try {
+    const response = await axios.put(`${apiUrl}/ai_canvas/${line._id}`, line, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+}

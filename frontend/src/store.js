@@ -17,10 +17,13 @@ export const useComponent = create((set, get) => ({
   //Variables
   sltCom: null,
   allCom: [],
+  isShowCom: false,
 
   //Functions
   handleSltCom: (value) => set((state) => ({ sltCom: value })),
   handleAllCom: (value) => set((state) => ({ allCom: value })),
+  showCom: () => set((state) => ({ isShowCom: true })),
+  shutCom: () => set((state) => ({ isShowCom: false })),
 
 }));
 //Draw Lines
