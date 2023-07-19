@@ -4,6 +4,7 @@ import Start from './components/main/start';
 import PopUp from './components/main/popUp';
 import Canvas from './components/main/canvas';
 import Step from './components/main/step';
+import TestPanel from './components/main/testPanel';
 
 import DrawButton from './components/basic/drawButton';
 
@@ -18,23 +19,20 @@ function App() {
   const allCom = useComponent(state => state.allCom);
   const handleAllCom = useComponent(state => state.handleAllCom);
   const isDrawing = useDraw(state => state.isDrawing);
-
-  // const [position, setPosition] = useState({ x: 0, y: 0 });
-
-
-
-  console.log(allCom);
-
   useEffect(() => {
     getSteps()
       .then(val => {
         handleAllCom(val);
+      })
+      .catch(err => {
+        console.log("error")
       })
   }, [])
   return (
     <>
       <div className="w-full min-h-screen  bg-gray-700 overflow-auto"
         style={{ backgroundImage: "url('./grid.png')" }}>
+
         <Canvas />
         <Start />
         <PopUp />

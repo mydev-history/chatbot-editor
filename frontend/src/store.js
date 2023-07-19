@@ -42,3 +42,12 @@ export const useDraw = create((set, get) => ({
   setAllLines: (value) => set((state) => ({ allLines: value })),
 
 }));
+
+export const useTest = create((set, get) => ({
+  isTest: false,
+  allTest: [],
+
+  startTest: () => set((state) => ({ isTest: true })),
+  endTest: () => set((state) => ({ isTest: false })),
+  setAllTest: (value) => set((state) => ({ allTest: value })),
+}))

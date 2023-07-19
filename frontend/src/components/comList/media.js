@@ -39,8 +39,8 @@ export default function Media() {
         imgData.append('img', file);
         uploadImg(imgData)
           .then(val => {
-            data.elements.type = "upload";
-            data.elements.content = val.filename;
+            data.elements[0].type = "upload";
+            data.elements[0].content = val.filename;
             handleSltCom(data);
             setUrl('');
           })
@@ -67,8 +67,8 @@ export default function Media() {
     checkImageExists(url)
       .then(val => {
         const data = sltCom;
-        data.elements.type = "url";
-        data.elements.content = url;
+        data.elements[0].type = "url";
+        data.elements[0].content = url;
         handleSltCom(data);
         setLoad(!load);
       })
@@ -83,8 +83,8 @@ export default function Media() {
 
   const delImg = () => {
     const data = sltCom;
-    data.elements.type = "";
-    data.elements.content = "";
+    data.elements[0].type = "";
+    data.elements[0].content = "";
     handleSltCom(data);
     setUrl('')
     setLoad(!load);
@@ -113,7 +113,7 @@ export default function Media() {
         <TabPanel key="upload" value="upload">
           <div className="flex items-center justify-center w-full" onMouseOver={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)}>
             {
-              (sltCom.elements.type === "upload" && sltCom.elements.content) ?
+              (sltCom.elements[0].type === "upload" && sltCom.elements[0].content) ?
 
                 <div>
                   <button
@@ -123,7 +123,7 @@ export default function Media() {
                     <FaTrash />
                   </button>
                   <img
-                    src={`http://localhost:5000/${sltCom.elements.content}`}
+                    src={`http://localhost:5000/${sltCom.elements[0].content}`}
                     alt="uploaded image"
                     className=" z-0"
                   />
@@ -150,7 +150,7 @@ export default function Media() {
         <TabPanel key="url" value="url">
           <div className="flex items-center justify-center w-full" onMouseOver={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)}>
             {
-              sltCom.elements.type === "url" ?
+              sltCom.elements[0].type === "url" ?
                 <button>
                   <div
                     onClick={delImg}
@@ -159,7 +159,7 @@ export default function Media() {
                     <FaTrash />
                   </div>
                   <div>
-                    <img src={sltCom.elements.content} className="z-0" />
+                    <img src={sltCom.elements[0].content} className="z-0" />
                   </div>
                 </button> :
                 <div className="flex flex-col items-center justify-center w-full">

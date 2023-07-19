@@ -39,6 +39,16 @@ export default function Btn() {
             return (
               <div key={index} className="flex flex-row w-full justify-center">
                 {
+                  element.type === "txt" &&
+                  <div className='w-11/12 mt-2'>
+                    <textarea
+                      value={element.content}
+                      className='w-full focus:outline-blue-300 h-32 p-2 resize-none border-2 border-gray-500 rounded-md'
+                      onChange={(e) => changeText(e.target.value, index)}
+                    />
+                  </div>
+                }
+                {
                   element.type === "button" &&
                   <div className='flex flex-row w-10/12 mt-3 bg-blue-400 justify-center border-blue-500 border-2 rounded-md'>
                     <input

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { FaFlagCheckered } from "react-icons/fa";
 
-import { useHandlePopUp, useDraw } from "../../store";
+import { useComponent, useHandlePopUp, useDraw, useTest } from "../../store";
 
 import { delLine } from '../../services/canvas.service';
 
 function Start() {
   const [showDrdw, setShowDrdw] = useState(false)
 
+  const allCom = useComponent(state => state.allCom);
   const isDrawing = useDraw(state => state.isDrawing);
   const allLines = useDraw(state => state.allLines);
   const sPId = useDraw(state => state.sPId);
@@ -17,10 +18,12 @@ function Start() {
   const setSP = useDraw(state => state.setSP);
   const setSPId = useDraw(state => state.setSPId);
   const setAllLines = useDraw(state => state.setAllLines);
+  const startTest = useTest(state => state.startTest);
+  const setAllTest = useTest(state => state.setAllTest);
 
   const createNewStep = () => {
     showPopUp();
-    setShowDrdw(!showDrdw)
+    setShowDrdw(!showDrdw);
   }
   const toggleDropDownOrStart = () => {
     if (!isDrawing) {
@@ -50,6 +53,26 @@ function Start() {
     setShowDrdw(!showDrdw);
   }
 
+  const testStart = () => {
+    startTest();
+    setShowDrdw(!showDrdw);
+    if (allLines.length) {
+      const index = allLines.findIndex(line => line.sp_id === "start");
+      if (index >= 0) {
+        const currentId = allLines[index].ep_id
+        const currentStep = Object.assign({}, allCom.filter(com => com._id === currentId)[0]);
+        const currentLines = allLines.filter(line => line.sp_id.includes(currentId));
+        currentLines.forEach(line => {
+          const no = parseInt(line.sp_id.split("-")[1]);
+          currentStep.elements[no].sp_id = line.sp_id;
+        });
+        const allTestData = [];
+        allTestData.push(currentStep);
+        setAllTest(allTestData);
+      }
+    }
+  }
+
   return (
     <>
       <div>
@@ -71,7 +94,7 @@ function Start() {
             <FaPlusCircle />
           </button> */}
         </button>
-        <div className={`absolute ${showDrdw ? '' : 'hidden'} top-72 left-5 w-36 h-20 bg-gray-600 mt-2 rounded-md p-1`}>
+        <div className={`absolute ${showDrdw ? '' : 'hidden'} top-72 left-5 w-36 h-28 bg-gray-600 mt-2 rounded-md p-1`}>
           <div className="flex flex-col mt-[3px] text-bold text-gray-200 text-sm">
             <button
               onClick={createNewStep}
@@ -87,7 +110,16 @@ function Start() {
                 DRAW LINE
               </p>
             </button>
+            <button
+              onClick={testStart}
+              className="rounded-full hover:bg-gray-400 hover:text-white border p-1 mt-1"
+            >
+              <p className="hover:scale-105">
+                TEST NOW
+              </p>
+            </button>
           </div>
+
         </div>
       </div>
     </>

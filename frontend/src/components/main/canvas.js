@@ -25,6 +25,9 @@ export default function Canvas() {
   useEffect(() => {
     getLines()
       .then(val => setAllLines(val))
+      .catch(err => {
+        console.log("error")
+      })
   }, []);
 
   useEffect(() => {

@@ -73,16 +73,22 @@ export const elements = {
   ],
   "btn": [
     {
+      type: "txt",
+      placeholder: "Click to edit",
+      content: ""
+    },
+    {
       type: "button",
       content: "",
       placeholder: "Click to edit",
       isNext: true
     },
   ],
-  "media": {
+  "media": [{
     type: "",
     content: "",
     isNext: true
+
   },
   "keyopt": [
     {
@@ -146,5 +152,6 @@ export const elements = {
       ]
     }
   ],
+
 
 }
