@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaFlagCheckered } from "react-icons/fa";
 
-import { useComponent, useHandlePopUp, useDraw, useTest } from "../../store";
+import { useComponent, useHandlePopUp, useDraw, useTest, useVariable } from "../../store";
 
 import { delLine } from '../../services/canvas.service';
 
@@ -20,6 +20,7 @@ function Start() {
   const setAllLines = useDraw(state => state.setAllLines);
   const startTest = useTest(state => state.startTest);
   const setAllTest = useTest(state => state.setAllTest);
+  const handleModal = useVariable(state => state.handleModal);
 
   const createNewStep = () => {
     showPopUp();
@@ -94,7 +95,7 @@ function Start() {
             <FaPlusCircle />
           </button> */}
         </button>
-        <div className={`absolute ${showDrdw ? '' : 'hidden'} top-72 left-5 w-36 h-28 bg-gray-600 mt-2 rounded-md p-1`}>
+        <div className={`absolute ${showDrdw ? '' : 'hidden'} top-72 left-5 w-36 h-36 bg-gray-600 mt-2 rounded-md p-1`}>
           <div className="flex flex-col mt-[3px] text-bold text-gray-200 text-sm">
             <button
               onClick={createNewStep}
@@ -116,6 +117,14 @@ function Start() {
             >
               <p className="hover:scale-105">
                 TEST NOW
+              </p>
+            </button>
+            <button
+              onClick={() => handleModal(true)}
+              className="rounded-full hover:bg-gray-400 hover:text-white border p-1 mt-1"
+            >
+              <p className="hover:scale-105">
+                SET VARIABLES
               </p>
             </button>
           </div>

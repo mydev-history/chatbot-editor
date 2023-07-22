@@ -109,11 +109,6 @@ export const items = [
         "icon": <icons.FaRandom />
       },
       {
-        "key": "variable",
-        "title": "Set a variable",
-        "icon": <icons.FaCode />
-      },
-      {
         "key": "formulas",
         "title": "Formulas",
         "icon": <icons.FaCodeBranch />
@@ -342,10 +337,6 @@ export const keyData = {
   "conditions": {
     "title": "Conditions",
     "icon": <icons.FaRandom />
-  },
-  "variable": {
-    "title": "Set a variable",
-    "icon": <icons.FaCode />
   },
   "formulas": {
     "title": "Formulas",

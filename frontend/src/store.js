@@ -24,7 +24,6 @@ export const useComponent = create((set, get) => ({
   handleAllCom: (value) => set((state) => ({ allCom: value })),
   showCom: () => set((state) => ({ isShowCom: true })),
   shutCom: () => set((state) => ({ isShowCom: false })),
-
 }));
 //Draw Lines
 export const useDraw = create((set, get) => ({
@@ -53,4 +52,12 @@ export const useTest = create((set, get) => ({
   startTest: () => set((state) => ({ isTest: true })),
   endTest: () => set((state) => ({ isTest: false })),
   setAllTest: (value) => set((state) => ({ allTest: value })),
-}))
+}));
+
+export const useVariable = create((set, get) => ({
+  isShowModal: false,
+  allVariables: [],
+
+  handleModal: (value) => set((state) => ({ isShowModal: value })),
+  setAllVariables: (value) => set((state) => ({ allVariables: value })),
+}));

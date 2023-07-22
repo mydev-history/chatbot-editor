@@ -30,7 +30,7 @@ export default function TestPanel() {
           <Header endTest={endTest} setAllTest={setAllTest} />
           <CardBody ref={messagesEndRef} className="overflow-y-auto comdetail-scrollbar">
             {
-              allTest.length &&
+              allTest.length > 0 &&
               allTest.map((test, index) => {
                 return (
                   <Body key={index} test={test} setLoad={setLoad} load={load} />

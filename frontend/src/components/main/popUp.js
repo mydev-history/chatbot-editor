@@ -19,7 +19,7 @@ export default function PopUp() {
       >
         <div className="h-[850px] p-5 bg-gray-800 rounded-md overflow-y-auto popup-scrollbar">
           {
-            items.length &&
+            items.length > 0 &&
             items.map(item => {
               return (
                 <div className="w-full mt-3" key={item["category"]}>

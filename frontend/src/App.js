@@ -5,6 +5,7 @@ import PopUp from './components/main/popUp';
 import Canvas from './components/main/canvas';
 import Step from './components/main/step';
 import TestPanel from './components/main/testPanel';
+import VariablePanel from './components/main/variablePanel';
 
 import DrawButton from './components/basic/drawButton';
 
@@ -34,6 +35,7 @@ function App() {
     <>
       <div className="w-full min-h-screen  bg-gray-700 overflow-auto"
         style={{ backgroundImage: "url('./grid.png')" }}>
+        <VariablePanel />
         <TestPanel />
         <Canvas />
         <Start />

@@ -19,7 +19,7 @@ export default function Txt() {
     <>
       <div className=''>
         {
-          sltCom.elements.length &&
+          sltCom.elements.length > 0 &&
           sltCom.elements.map((element, index) => {
             return (
               <div key={index}>

@@ -91,25 +91,20 @@ export default function Canvas() {
       <div className='absolute'>
         <canvas ref={canvasRef} />
       </div>{
-        allLines.length ? (
-          allLines.map((line, index) => {
-            return (
-              <Draggable
-                key={line._id}
-                position={{ x: line.e_pos.x - 8, y: line.e_pos.y - 10 }}
-              >
-                <div className='absolute text-xl text-lightblue'>
-                  <FaAngleDoubleRight />
-                </div>
-              </Draggable>
-            )
+        allLines.length > 0 &&
+        allLines.map((line, index) => {
+          return (
+            <Draggable
+              key={line._id}
+              position={{ x: line.e_pos.x - 8, y: line.e_pos.y - 10 }}
+            >
+              <div className='absolute text-xl text-lightblue'>
+                <FaAngleDoubleRight />
+              </div>
+            </Draggable>
+          )
 
-          })
-        ) : (
-          <div className='absolute text-xl text-lightblue'>
-
-          </div>
-        )
+        })
       }
       {/* <Draggable position={{ x: endPoint.x - 8, y: endPoint.y - 10 }}>
         <div className='absolute text-xl text-lightblue'><FaAngleDoubleRight /></div>

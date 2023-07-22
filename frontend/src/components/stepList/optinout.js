@@ -10,7 +10,6 @@ export default function Optinout({
   btnRef,
 }) {
 
-  console.log(com);
 
   const isDrawing = useDraw(state => state.isDrawing);
   const allLines = useDraw(state => state.allLines);

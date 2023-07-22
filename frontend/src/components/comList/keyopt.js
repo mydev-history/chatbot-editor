@@ -6,7 +6,6 @@ export default function Keyopt() {
 
   const sltCom = useComponent(state => state.sltCom);
   const handleSltCom = useComponent(state => state.handleSltCom);
-  console.log(sltCom);
 
   const addButton = () => {
     const selData = sltCom;
@@ -24,7 +23,7 @@ export default function Keyopt() {
   return (
     <>
       <div className='flex flex-col overflow-y-auto p-1 comdetail-scrollbar'>
-        {sltCom.elements.length &&
+        {sltCom.elements.length > 0 &&
           sltCom.elements.map((element, index) => {
             return (
               <div key={index}>
@@ -69,7 +68,7 @@ export default function Keyopt() {
                         </div>
                       </div>
                       {
-                        element.keywords.length &&
+                        element.keywords.length > 0 &&
                         element.keywords.map((keyword, index) => {
                           return (
                             <input className="w-11/12 bg-gray-600 rounded-md mt-1 px-2 text-sm py-1" placeholder={keyword.placeholder} />

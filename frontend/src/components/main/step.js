@@ -18,7 +18,6 @@ export default function Step({
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [showDelStep, setShowDelStep] = useState(false);
-  const [load, setLoad] = useState(false);
 
   const sltCom = useComponent(state => state.sltCom)
   const allCom = useComponent(state => state.allCom);
@@ -125,9 +124,6 @@ export default function Step({
         line.e_pos.x = position.x - 10;
         line.e_pos.y = position.y + 22;
         replaceLine(line)
-          .then(val => {
-            console.log(val);
-          })
           .catch(err => {
             console.log(err)
           })
@@ -139,9 +135,6 @@ export default function Step({
         line.s_pos.x = bounds.left + 10;
         line.s_pos.y = bounds.top + 10;
         replaceLine(line)
-          .then(val => {
-            console.log(val);
-          })
           .catch(err => {
             console.log(err)
           })

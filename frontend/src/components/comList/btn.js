@@ -34,7 +34,7 @@ export default function Btn() {
     <>
       <div className='flex flex-col overflow-y-auto p-1 comdetail-scrollbar'>
         {
-          sltCom.elements.length &&
+          sltCom.elements.length > 0 &&
           sltCom.elements.map((element, index) => {
             return (
               <div key={index} className="flex flex-row w-full justify-center">

@@ -9,3 +9,7 @@
 .comdetail-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.variable-scrollbar::-webkit-scrollbar {
+  display: none;
+}
